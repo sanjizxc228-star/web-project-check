@@ -1,0 +1,38 @@
+name: Web Project Check
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  project-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download repository
+        uses: actions/checkout@v4
+
+      - name: Check HTML file
+        run: |
+          if [ -f index.html ]; then
+            echo "HTML file exists"
+          else
+            echo "HTML file not found"
+            exit 1
+          fi
+
+      - name: Check CSS file
+        run: |
+          if [ -f style.css ]; then
+            echo "CSS file exists"
+          else
+            echo "CSS file not found"
+            exit 1
+          fi
+
+      - name: List project files
+        run: ls -la
+
+      - name: Finish
+        run: echo "Project check completed"
