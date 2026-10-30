@@ -1,4 +1,4 @@
-name: Web Project Check
+name: My Website CI
 
 on:
   push:
